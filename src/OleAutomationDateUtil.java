@@ -1,12 +1,11 @@
 import java.util.TimeZone;
 import java.util.Date;
 import java.util.Calendar;
-
 public class OleAutomationDateUtil {
     
-    private long ONE_DAY = 24L * 60 * 60 * 1000;
+    private static final long ONE_DAY = 24L * 60 * 60 * 1000;
 
-    public Date fromOADate(double d, TimeZone tz) {
+    public static Date fromOADate(double d, TimeZone tz) {
 
         long wholeDays = (long) d;
         double fracDays = Math.abs(d - wholeDays);
@@ -17,7 +16,7 @@ public class OleAutomationDateUtil {
         return new Date( base.getTime() + offset );
     }
 
-    private Date baseFor(TimeZone tz) {
+    private static Date baseFor(TimeZone tz) {
 
         Calendar c = Calendar.getInstance(tz);
         c.clear();
